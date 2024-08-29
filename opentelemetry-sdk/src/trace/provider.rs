@@ -89,7 +89,7 @@ impl TracerProvider {
     }
 
     /// Span processors associated with this provider
-    pub(crate) fn span_processors(&self) -> &[Box<dyn SpanProcessor>] {
+    pub fn span_processors(&self) -> &[Box<dyn SpanProcessor>] {
         &self.inner.processors
     }
 
