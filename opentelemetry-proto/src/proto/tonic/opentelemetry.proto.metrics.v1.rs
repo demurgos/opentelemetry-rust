@@ -694,11 +694,25 @@ pub struct Exemplar {
     /// span_id may be missing if the measurement is not recorded inside a trace
     /// or if the trace is not sampled.
     #[prost(bytes = "vec", tag = "4")]
+    #[cfg_attr(
+        feature = "with-serde",
+        serde(
+            serialize_with = "crate::proto::serializers::serialize_to_hex_string",
+            deserialize_with = "crate::proto::serializers::deserialize_from_hex_string"
+        )
+    )]
     pub span_id: ::prost::alloc::vec::Vec<u8>,
     /// (Optional) Trace ID of the exemplar trace.
     /// trace_id may be missing if the measurement is not recorded inside a trace
     /// or if the trace is not sampled.
     #[prost(bytes = "vec", tag = "5")]
+    #[cfg_attr(
+        feature = "with-serde",
+        serde(
+            serialize_with = "crate::proto::serializers::serialize_to_hex_string",
+            deserialize_with = "crate::proto::serializers::deserialize_from_hex_string"
+        )
+    )]
     pub trace_id: ::prost::alloc::vec::Vec<u8>,
     /// The value of the measurement that was recorded. An exemplar is
     /// considered invalid when one of the recognized value fields is not present

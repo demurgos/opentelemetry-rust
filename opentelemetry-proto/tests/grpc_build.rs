@@ -71,8 +71,12 @@ fn build_tonic() {
         "trace.v1.Span.trace_id",
         "trace.v1.Span.span_id",
         "trace.v1.Span.parent_span_id",
+        "trace.v1.Span.Link.trace_id",
+        "trace.v1.Span.Link.span_id",
         "logs.v1.LogRecord.span_id",
         "logs.v1.LogRecord.trace_id",
+        "metrics.v1.Exemplar.span_id",
+        "metrics.v1.Exemplar.trace_id",
     ] {
         builder = builder
             .field_attribute(path, "#[cfg_attr(feature = \"with-serde\", serde(serialize_with = \"crate::proto::serializers::serialize_to_hex_string\", deserialize_with = \"crate::proto::serializers::deserialize_from_hex_string\"))]")
